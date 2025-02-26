@@ -37,6 +37,15 @@ https://github.com/softScheck/tplink-smartplug
 scp user@remotehost:/home/user/file_name
 scp -r user@remotehost:/home/user/file_name/ .
 
+### IF you get the "processes that could cause trouble" error
+airmon-ng check kill
+
+pkill <pid>
+# unplug and re-plug in the alpha card
+ ip address # check to make sure it works with this
+
+
+
 References:
 https://www.aircrack-ng.org/doku.php?id=newbie_guide
 https://www.aircrack-ng.org/doku.php?id=aireplay-ng
