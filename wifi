@@ -44,6 +44,11 @@ pkill <pid>
 # unplug and re-plug in the alpha card
  ip address # check to make sure it works with this
 
+## Start network manager service
+systemctl status NetworkManager.service
+systemctl start NetworkManager.service
+
+
 
 
 References:
